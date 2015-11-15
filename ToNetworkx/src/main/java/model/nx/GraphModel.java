@@ -5,12 +5,14 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import static java.util.stream.Collectors.*;
 
@@ -20,24 +22,31 @@ import java.util.Arrays;
 import model.df.Clazz;
 import model.df.Connection;
 import model.df.ConnectionType;
+import model.df.Feature;
 import model.df.Package;
 import static java.util.Optional.*;
 
 public class GraphModel {
-	private final Map<String, String> featuresToClazzes = new HashMap<>();
-	private final Map<String, Integer> clazzesToId = new HashMap<>();
-	private final Map<Integer, Collection<Integer>> classesToEdges = new HashMap<>();
+	private final Map<Feature, Clazz> featuresToClazzes = new HashMap<>();
+	private final Map<Clazz, Collection<Clazz>> classesToEdges = new HashMap<>();
+	private final Map<String, Clazz> classNames = new HashMap<>();
+	private final Map<String, Feature> featureNames = new HashMap<>();
 	private final List<Clazz> clazzes;
 
-	private final AtomicInteger clazzIds;
-
-	public GraphModel(Collection<Package> packages, Boolean onlyConfirmed) {
-		clazzIds = new AtomicInteger(1);
+	public GraphModel(Collection<Package> packages) {
 		clazzes = populateClazzes(packages);
-		populateClazzIds();
-
+		populateNames();
 		populateFeaturesToClazzes();
 		populateEdges();
+	}
+
+	private void populateNames() {
+		clazzes.forEach(clazz -> {
+			classNames.put(clazz.getName(), clazz);
+			ofNullable(clazz.getFeatures()).ifPresent(
+					features -> features
+							.forEach(feature -> featureNames.put(feature.getName(), feature)));
+		});
 	}
 
 	private Collection<Connection> getClazzConnections(Clazz clazz) {
@@ -52,13 +61,10 @@ public class GraphModel {
 	}
 
 	private void populateEdges() {
-		clazzesToId
-				.values()
-				.parallelStream()
-				.forEach(id -> classesToEdges.put(id, new HashSet<>()));
+		clazzes.forEach(id -> classesToEdges.put(id, new HashSet<>()));
 
 		clazzes.parallelStream().forEach(clazz -> {
-			Collection<Integer> edges = classesToEdges.get(clazzesToId.get(clazz.getName()));
+			Collection<Clazz> edges = classesToEdges.get(clazz);
 			getClazzConnections(clazz)
 					.forEach((connection) -> edges.add(mapConnection(connection)));
 		});
@@ -68,13 +74,7 @@ public class GraphModel {
 		clazzes.parallelStream().forEach(
 				clazz -> ofNullable(clazz.getFeatures()).ifPresent(
 						features -> features.parallelStream().forEach(
-								feature -> featuresToClazzes
-										.put(feature.getName(), clazz.getName()))));
-	}
-
-	private void populateClazzIds() {
-		clazzes.parallelStream().forEach(
-				clazz -> clazzesToId.put(clazz.getName(), clazzIds.getAndIncrement()));
+								feature -> featuresToClazzes.put(feature, clazz))));
 	}
 
 	private List<Clazz> populateClazzes(Collection<Package> packages) {
@@ -84,32 +84,30 @@ public class GraphModel {
 				.collect(toList());
 	}
 
-	private Integer mapConnection(Connection connection) {
-		return clazzesToId.get(
-				connection.getType().equals(ConnectionType.CLAZZ)
-						? connection.getValue()
-						: featuresToClazzes.get(connection.getValue()));
+	private Clazz mapConnection(Connection connection) {
+		return connection.getType().equals(ConnectionType.CLAZZ)
+				? classNames.get(connection.getValue())
+				: featuresToClazzes.get(featureNames.get(connection.getValue()));
 	}
 
-	public Map<String, String> getFeaturesToClazzes() {
+	public Map<Feature, Clazz> getFeaturesToClazzes() {
 		return featuresToClazzes;
 	}
 
-	public Map<String, Integer> getClazzesToId() {
-		return clazzesToId;
-	}
-
-	public Map<Integer, Collection<Integer>> getClassesToEdges() {
+	public Map<Clazz, Collection<Clazz>> getEdges() {
 		return classesToEdges;
 	}
 
-	@JsonIgnore
-	public List<Clazz> getClazzes() {
-		return clazzes;
+	public Map<String, Clazz> getClassNames() {
+		return classNames;
 	}
 
-	public AtomicInteger getClazzIds() {
-		return clazzIds;
+	public Map<String, Feature> getFeatureNames() {
+		return featureNames;
+	}
+
+	public List<Clazz> getClazzes() {
+		return clazzes;
 	}
 
 }

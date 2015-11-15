@@ -11,7 +11,7 @@ public class Application {
 	private static final String NETWORK_X_OUTPUT_FOLDER = "networkX";
 	private static final String DEPENDENCY_FINDER_INPUT_FOLDER = "dependencyFinderOutput";
 	private static DependencyFinderXMLLoader dfLoader = new DependencyFinderXMLLoader();
-	private static final FileWriter fileWriter = new FileWriter();
+	private static final GraphWriter fileWriter = new GraphWriter(false);
 	private static final FileGetter fileGetter = new FileGetter();
 
 	public static void main(String... args) {
@@ -22,9 +22,7 @@ public class Application {
 				.collect(
 						toMap(
 								Application::changeToOutputFile,
-								file -> new GraphModel(
-										dfLoader.getPackages(file).getPackages(),
-										false)))
+								file -> new GraphModel(dfLoader.getPackages(file).getPackages())))
 				.forEach(fileWriter::writeObject);
 		;
 		long endTimeMillis = System.currentTimeMillis();
