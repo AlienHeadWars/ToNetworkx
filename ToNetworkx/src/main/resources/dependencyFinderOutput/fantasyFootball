@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE dependencies SYSTEM "http://depfind.sourceforge.net/dtd/dependencies.dtd">
+
+<dependencies>
+    <package confirmed="yes">
+        <name>application</name>
+        <class confirmed="yes">
+            <name>application.FantasyFootballApplication</name>
+            <outbound type="class" confirmed="no">io.dropwizard.Application</outbound>
+            <feature confirmed="yes">
+                <name>application.FantasyFootballApplication.FantasyFootballApplication()</name>
+                <outbound type="feature" confirmed="no">io.dropwizard.Application.Application()</outbound>
+                <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.main(java.lang.String[])</inbound>
+            </feature>
+            <feature confirmed="no">
+                <name>application.FantasyFootballApplication.getName()</name>
+                <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.run(application.FantasyFootballConfiguration, io.dropwizard.setup.Environment)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>application.FantasyFootballApplication.initialize(io.dropwizard.setup.Bootstrap)</name>
+                <outbound type="class" confirmed="no">io.dropwizard.setup.Bootstrap</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>application.FantasyFootballApplication.main(java.lang.String[])</name>
+                <outbound type="feature" confirmed="yes">application.FantasyFootballApplication.FantasyFootballApplication()</outbound>
+                <outbound type="feature" confirmed="no">application.FantasyFootballApplication.run(java.lang.String[])</outbound>
+                <outbound type="class" confirmed="no">java.lang.Exception</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>application.FantasyFootballApplication.run(application.FantasyFootballConfiguration, io.dropwizard.setup.Environment)</name>
+                <outbound type="feature" confirmed="no">application.FantasyFootballApplication.getName()</outbound>
+                <outbound type="class" confirmed="yes">application.FantasyFootballConfiguration</outbound>
+                <outbound type="class" confirmed="no">com.sun.jersey.api.client.Client</outbound>
+                <outbound type="feature" confirmed="no">io.dropwizard.client.JerseyClientBuilder.JerseyClientBuilder(io.dropwizard.setup.Environment)</outbound>
+                <outbound type="feature" confirmed="no">io.dropwizard.client.JerseyClientBuilder.build(java.lang.String)</outbound>
+                <outbound type="class" confirmed="no">io.dropwizard.jersey.setup.JerseyEnvironment</outbound>
+                <outbound type="feature" confirmed="no">io.dropwizard.jersey.setup.JerseyEnvironment.register(java.lang.Object)</outbound>
+                <outbound type="class" confirmed="no">io.dropwizard.setup.Environment</outbound>
+                <outbound type="feature" confirmed="no">io.dropwizard.setup.Environment.jersey()</outbound>
+                <outbound type="class" confirmed="no">java.lang.Exception</outbound>
+                <outbound type="class" confirmed="no">java.lang.Object</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <outbound type="feature" confirmed="no">player.PlayerResource.PlayerResource(com.sun.jersey.api.client.Client)</outbound>
+                <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.run(io.dropwizard.Configuration, io.dropwizard.setup.Environment)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>application.FantasyFootballApplication.run(io.dropwizard.Configuration, io.dropwizard.setup.Environment)</name>
+                <outbound type="feature" confirmed="yes">application.FantasyFootballApplication.run(application.FantasyFootballConfiguration, io.dropwizard.setup.Environment)</outbound>
+                <outbound type="class" confirmed="yes">application.FantasyFootballConfiguration</outbound>
+                <outbound type="class" confirmed="no">io.dropwizard.Configuration</outbound>
+                <outbound type="class" confirmed="no">io.dropwizard.setup.Environment</outbound>
+                <outbound type="class" confirmed="no">java.lang.Exception</outbound>
+            </feature>
+            <feature confirmed="no">
+                <name>application.FantasyFootballApplication.run(java.lang.String[])</name>
+                <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.main(java.lang.String[])</inbound>
+            </feature>
+        </class>
+        <class confirmed="yes">
+            <name>application.FantasyFootballConfiguration</name>
+            <outbound type="class" confirmed="no">io.dropwizard.Configuration</outbound>
+            <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.run(application.FantasyFootballConfiguration, io.dropwizard.setup.Environment)</inbound>
+            <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.run(io.dropwizard.Configuration, io.dropwizard.setup.Environment)</inbound>
+            <feature confirmed="yes">
+                <name>application.FantasyFootballConfiguration.FantasyFootballConfiguration()</name>
+                <outbound type="feature" confirmed="no">io.dropwizard.Configuration.Configuration()</outbound>
+            </feature>
+        </class>
+    </package>
+    <package confirmed="no">
+        <name>com.fasterxml.jackson.annotation</name>
+        <class confirmed="no">
+            <name>com.fasterxml.jackson.annotation.JsonIgnore</name>
+            <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.getId()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.View.getName()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Views.addView(couchdb.View)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Views.setLanguage(java.lang.String)</inbound>
+        </class>
+        <class confirmed="no">
+            <name>com.fasterxml.jackson.annotation.JsonIgnoreProperties</name>
+            <inbound type="class" confirmed="yes">couchdb.Entity</inbound>
+        </class>
+        <class confirmed="no">
+            <name>com.fasterxml.jackson.annotation.JsonInclude</name>
+            <inbound type="class" confirmed="yes">couchdb.Replicator</inbound>
+            <inbound type="class" confirmed="yes">couchdb.SimpleEntity</inbound>
+            <inbound type="class" confirmed="yes">couchdb.View</inbound>
+        </class>
+        <class confirmed="no">
+            <name>com.fasterxml.jackson.annotation.JsonInclude$Include</name>
+            <feature confirmed="no">
+                <name>com.fasterxml.jackson.annotation.JsonInclude$Include.NON_NULL</name>
+                <inbound type="class" confirmed="yes">couchdb.Replicator</inbound>
+                <inbound type="class" confirmed="yes">couchdb.SimpleEntity</inbound>
+                <inbound type="class" confirmed="yes">couchdb.View</inbound>
+            </feature>
+        </class>
+        <class confirmed="no">
+            <name>com.fasterxml.jackson.annotation.JsonProperty</name>
+            <inbound type="feature" confirmed="yes">couchdb.EntityResponse.getOk()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.EntityResponse.getRevision()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.EntityResponse.setId(java.lang.String)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryResponse.getOffset()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryResponse.getRows()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryResponse.getTotalRows()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryRow.getEntity()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryRow.getId()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryRow.getKey()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Replicator.getContinuous()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Replicator.getCreateTarget()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Replicator.getSource()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Replicator.getTarget()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.getRevision()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.setId(java.lang.String)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.View.getMap()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.View.getReduce()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Views.getLanguage()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Views.getViews()</inbound>
+        </class>
+    </package>
+    <package confirmed="no">
+        <name>com.sun.jersey.api.client</name>
+        <class confirmed="no">
+            <name>com.sun.jersey.api.client.Client</name>
+            <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.run(application.FantasyFootballConfiguration, io.dropwizard.setup.Environment)</inbound>
+        </class>
+    </package>
+    <package confirmed="yes">
+        <name>couchdb</name>
+        <class confirmed="yes">
+            <name>couchdb.AbstractDAO$Supplier</name>
+            <outbound type="class" confirmed="no">java.lang.Object</outbound>
+            <feature confirmed="yes">
+                <name>couchdb.AbstractDAO$Supplier.get()</name>
+                <outbound type="class" confirmed="no">java.io.IOException</outbound>
+                <outbound type="class" confirmed="no">java.lang.Object</outbound>
+            </feature>
+        </class>
+        <class confirmed="yes">
+            <name>couchdb.CouchDbUtilities</name>
+            <outbound type="class" confirmed="no">java.lang.Object</outbound>
+            <feature confirmed="yes">
+                <name>couchdb.CouchDbUtilities.CouchDbUtilities()</name>
+                <outbound type="feature" confirmed="no">java.lang.Object.Object()</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.CouchDbUtilities.INDEX</name>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.CouchDbUtilities.databasePrefix</name>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getDatabasePrefix()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.setDatabasePrefix(java.lang.String)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.CouchDbUtilities.generateIndexForField(java.lang.String)</name>
+                <outbound type="class" confirmed="yes">couchdb.View</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.View.View(java.lang.String)</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.View.setMap(java.lang.String)</outbound>
+                <outbound type="class" confirmed="no">java.lang.Object</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <outbound type="feature" confirmed="no">java.lang.String.format(java.lang.String, java.lang.Object[])</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.generateIndexesForFields(java.util.Collection)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.CouchDbUtilities.generateIndexesForFields(java.util.Collection)</name>
+                <outbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.generateIndexForField(java.lang.String)</outbound>
+                <outbound type="class" confirmed="yes">couchdb.View</outbound>
+                <outbound type="class" confirmed="no">java.lang.Object</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <outbound type="class" confirmed="no">java.util.Collection</outbound>
+                <outbound type="feature" confirmed="no">java.util.Collection.iterator()</outbound>
+                <outbound type="feature" confirmed="no">java.util.HashMap.HashMap()</outbound>
+                <outbound type="class" confirmed="no">java.util.Iterator</outbound>
+                <outbound type="feature" confirmed="no">java.util.Iterator.hasNext()</outbound>
+                <outbound type="feature" confirmed="no">java.util.Iterator.next()</outbound>
+                <outbound type="class" confirmed="no">java.util.Map</outbound>
+                <outbound type="feature" confirmed="no">java.util.Map.put(java.lang.Object, java.lang.Object)</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.CouchDbUtilities.getDatabaseNameForEntity(java.lang.Class)</name>
+                <outbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getDatabasePrefix()</outbound>
+                <outbound type="class" confirmed="no">java.lang.Class</outbound>
+                <outbound type="feature" confirmed="no">java.lang.Class.getSimpleName()</outbound>
+                <outbound type="class" confirmed="no">java.lang.Object</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <outbound type="feature" confirmed="no">java.lang.String.toLowerCase()</outbound>
+                <outbound type="feature" confirmed="no">java.lang.String.valueOf(java.lang.Object)</outbound>
+                <outbound type="class" confirmed="no">java.lang.StringBuilder</outbound>
+                <outbound type="feature" confirmed="no">java.lang.StringBuilder.StringBuilder(java.lang.String)</outbound>
+                <outbound type="feature" confirmed="no">java.lang.StringBuilder.append(java.lang.String)</outbound>
+                <outbound type="feature" confirmed="no">java.lang.StringBuilder.toString()</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.CouchDbUtilities.getDatabasePrefix()</name>
+                <outbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.databasePrefix</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getDatabaseNameForEntity(java.lang.Class)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.CouchDbUtilities.getEntitiesFromQueryReponse(couchdb.QueryResponse)</name>
+                <outbound type="class" confirmed="yes">couchdb.QueryResponse</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.QueryResponse.getRows()</outbound>
+                <outbound type="class" confirmed="yes">couchdb.QueryRow</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.QueryRow.getEntity()</outbound>
+                <outbound type="class" confirmed="yes">couchdb.SimpleEntity</outbound>
+                <outbound type="class" confirmed="no">java.lang.Object</outbound>
+                <outbound type="feature" confirmed="no">java.util.ArrayList.ArrayList()</outbound>
+                <outbound type="feature" confirmed="no">java.util.ArrayList.add(java.lang.Object)</outbound>
+                <outbound type="class" confirmed="no">java.util.Iterator</outbound>
+                <outbound type="feature" confirmed="no">java.util.Iterator.hasNext()</outbound>
+                <outbound type="feature" confirmed="no">java.util.Iterator.next()</outbound>
+                <outbound type="class" confirmed="no">java.util.List</outbound>
+                <outbound type="feature" confirmed="no">java.util.List.iterator()</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.CouchDbUtilities.parseParameter(java.lang.String)</name>
+                <outbound type="class" confirmed="no">java.lang.CharSequence</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <outbound type="feature" confirmed="no">java.lang.String.replace(java.lang.CharSequence, java.lang.CharSequence)</outbound>
+                <outbound type="class" confirmed="no">java.lang.StringBuilder</outbound>
+                <outbound type="feature" confirmed="no">java.lang.StringBuilder.StringBuilder(java.lang.String)</outbound>
+                <outbound type="feature" confirmed="no">java.lang.StringBuilder.append(java.lang.String)</outbound>
+                <outbound type="feature" confirmed="no">java.lang.StringBuilder.toString()</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.CouchDbUtilities.setDatabasePrefix(java.lang.String)</name>
+                <outbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.databasePrefix</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+        </class>
+        <class confirmed="yes">
+            <name>couchdb.Entity</name>
+            <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonIgnoreProperties</outbound>
+            <outbound type="class" confirmed="yes">couchdb.SimpleEntity</outbound>
+            <feature confirmed="yes">
+                <name>couchdb.Entity.Entity()</name>
+                <outbound type="feature" confirmed="yes">couchdb.SimpleEntity.SimpleEntity()</outbound>
+            </feature>
+        </class>
+        <class confirmed="yes">
+            <name>couchdb.EntityResponse</name>
+            <outbound type="class" confirmed="yes">couchdb.SimpleEntity</outbound>
+            <feature confirmed="yes">
+                <name>couchdb.EntityResponse.EntityResponse()</name>
+                <outbound type="feature" confirmed="yes">couchdb.SimpleEntity.SimpleEntity()</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.EntityResponse.getOk()</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonProperty</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.EntityResponse.ok</outbound>
+                <outbound type="class" confirmed="no">java.lang.Boolean</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.EntityResponse.getRevision()</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonProperty</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.SimpleEntity.getRevision()</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.EntityResponse.ok</name>
+                <outbound type="class" confirmed="no">java.lang.Boolean</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.EntityResponse.getOk()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.EntityResponse.setOk(java.lang.Boolean)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.EntityResponse.setId(java.lang.String)</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonProperty</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.SimpleEntity.setId(java.lang.String)</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.EntityResponse.setOk(java.lang.Boolean)</name>
+                <outbound type="feature" confirmed="yes">couchdb.EntityResponse.ok</outbound>
+                <outbound type="class" confirmed="no">java.lang.Boolean</outbound>
+            </feature>
+        </class>
+        <class confirmed="yes">
+            <name>couchdb.QueryResponse</name>
+            <outbound type="class" confirmed="no">java.lang.Object</outbound>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getEntitiesFromQueryReponse(couchdb.QueryResponse)</inbound>
+            <feature confirmed="yes">
+                <name>couchdb.QueryResponse.QueryResponse()</name>
+                <outbound type="feature" confirmed="no">java.lang.Object.Object()</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.QueryResponse.getOffset()</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonProperty</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.QueryResponse.offset</outbound>
+                <outbound type="class" confirmed="no">java.lang.Integer</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.QueryResponse.getRows()</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonProperty</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.QueryResponse.rows</outbound>
+                <outbound type="class" confirmed="no">java.util.List</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getEntitiesFromQueryReponse(couchdb.QueryResponse)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.QueryResponse.getTotalRows()</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonProperty</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.QueryResponse.totalRows</outbound>
+                <outbound type="class" confirmed="no">java.lang.Integer</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.QueryResponse.offset</name>
+                <outbound type="class" confirmed="no">java.lang.Integer</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.QueryResponse.getOffset()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.QueryResponse.setOffset(java.lang.Integer)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.QueryResponse.rows</name>
+                <outbound type="class" confirmed="no">java.util.List</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.QueryResponse.getRows()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.QueryResponse.setRows(java.util.List)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.QueryResponse.setOffset(java.lang.Integer)</name>
+                <outbound type="feature" confirmed="yes">couchdb.QueryResponse.offset</outbound>
+                <outbound type="class" confirmed="no">java.lang.Integer</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.QueryResponse.setRows(java.util.List)</name>
+                <outbound type="feature" confirmed="yes">couchdb.QueryResponse.rows</outbound>
+                <outbound type="class" confirmed="no">java.util.List</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.QueryResponse.setTotalRows(java.lang.Integer)</name>
+                <outbound type="feature" confirmed="yes">couchdb.QueryResponse.totalRows</outbound>
+                <outbound type="class" confirmed="no">java.lang.Integer</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.QueryResponse.totalRows</name>
+                <outbound type="class" confirmed="no">java.lang.Integer</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.QueryResponse.getTotalRows()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.QueryResponse.setTotalRows(java.lang.Integer)</inbound>
+            </feature>
+        </class>
+        <class confirmed="yes">
+            <name>couchdb.QueryRow</name>
+            <outbound type="class" confirmed="no">java.lang.Object</outbound>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getEntitiesFromQueryReponse(couchdb.QueryResponse)</inbound>
+            <feature confirmed="yes">
+                <name>couchdb.QueryRow.QueryRow()</name>
+                <outbound type="feature" confirmed="no">java.lang.Object.Object()</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.QueryRow.entity</name>
+                <outbound type="class" confirmed="yes">couchdb.SimpleEntity</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.QueryRow.getEntity()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.QueryRow.setEntity(couchdb.SimpleEntity)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.QueryRow.getEntity()</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonProperty</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.QueryRow.entity</outbound>
+                <outbound type="class" confirmed="yes">couchdb.SimpleEntity</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getEntitiesFromQueryReponse(couchdb.QueryResponse)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.QueryRow.getId()</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonProperty</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.QueryRow.id</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.QueryRow.getKey()</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonProperty</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.QueryRow.key</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.QueryRow.id</name>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.QueryRow.getId()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.QueryRow.setId(java.lang.String)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.QueryRow.key</name>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.QueryRow.getKey()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.QueryRow.setKey(java.lang.String)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.QueryRow.setEntity(couchdb.SimpleEntity)</name>
+                <outbound type="feature" confirmed="yes">couchdb.QueryRow.entity</outbound>
+                <outbound type="class" confirmed="yes">couchdb.SimpleEntity</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.QueryRow.setId(java.lang.String)</name>
+                <outbound type="feature" confirmed="yes">couchdb.QueryRow.id</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.QueryRow.setKey(java.lang.String)</name>
+                <outbound type="feature" confirmed="yes">couchdb.QueryRow.key</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+        </class>
+        <class confirmed="yes">
+            <name>couchdb.Replicator</name>
+            <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonInclude</outbound>
+            <outbound type="feature" confirmed="no">com.fasterxml.jackson.annotation.JsonInclude$Include.NON_NULL</outbound>
+            <outbound type="class" confirmed="no">java.lang.Object</outbound>
+            <feature confirmed="yes">
+                <name>couchdb.Replicator.Replicator(java.lang.String, java.lang.String)</name>
+                <outbound type="feature" confirmed="yes">couchdb.Replicator.Replicator(java.lang.String, java.lang.String, java.lang.Boolean, java.lang.Boolean)</outbound>
+                <outbound type="class" confirmed="no">java.lang.Boolean</outbound>
+                <outbound type="feature" confirmed="no">java.lang.Boolean.valueOf(boolean)</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.Replicator.Replicator(java.lang.String, java.lang.String, java.lang.Boolean, java.lang.Boolean)</name>
+                <outbound type="feature" confirmed="yes">couchdb.Replicator.continuous</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.Replicator.createTarget</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.Replicator.source</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.Replicator.target</outbound>
+                <outbound type="class" confirmed="no">java.lang.Boolean</outbound>
+                <outbound type="feature" confirmed="no">java.lang.Object.Object()</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.Replicator.Replicator(java.lang.String, java.lang.String)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.Replicator.continuous</name>
+                <outbound type="class" confirmed="no">java.lang.Boolean</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.Replicator.Replicator(java.lang.String, java.lang.String, java.lang.Boolean, java.lang.Boolean)</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.Replicator.getContinuous()</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.Replicator.createTarget</name>
+                <outbound type="class" confirmed="no">java.lang.Boolean</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.Replicator.Replicator(java.lang.String, java.lang.String, java.lang.Boolean, java.lang.Boolean)</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.Replicator.getCreateTarget()</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.Replicator.getContinuous()</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonProperty</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.Replicator.continuous</outbound>
+                <outbound type="class" confirmed="no">java.lang.Boolean</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.Replicator.getCreateTarget()</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonProperty</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.Replicator.createTarget</outbound>
+                <outbound type="class" confirmed="no">java.lang.Boolean</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.Replicator.getSource()</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonProperty</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.Replicator.source</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.Replicator.getTarget()</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonProperty</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.Replicator.target</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.Replicator.source</name>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.Replicator.Replicator(java.lang.String, java.lang.String, java.lang.Boolean, java.lang.Boolean)</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.Replicator.getSource()</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.Replicator.target</name>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.Replicator.Replicator(java.lang.String, java.lang.String, java.lang.Boolean, java.lang.Boolean)</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.Replicator.getTarget()</inbound>
+            </feature>
+        </class>
+        <class confirmed="yes">
+            <name>couchdb.SimpleEntity</name>
+            <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonInclude</outbound>
+            <outbound type="feature" confirmed="no">com.fasterxml.jackson.annotation.JsonInclude$Include.NON_NULL</outbound>
+            <outbound type="class" confirmed="no">java.lang.Object</outbound>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getEntitiesFromQueryReponse(couchdb.QueryResponse)</inbound>
+            <inbound type="class" confirmed="yes">couchdb.Entity</inbound>
+            <inbound type="class" confirmed="yes">couchdb.EntityResponse</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryRow.entity</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryRow.getEntity()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryRow.setEntity(couchdb.SimpleEntity)</inbound>
+            <inbound type="class" confirmed="yes">couchdb.Views</inbound>
+            <feature confirmed="yes">
+                <name>couchdb.SimpleEntity.SimpleEntity()</name>
+                <outbound type="feature" confirmed="no">java.lang.Object.Object()</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.Entity.Entity()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.EntityResponse.EntityResponse()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.Views.Views()</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.SimpleEntity.equals(java.lang.Object)</name>
+                <outbound type="feature" confirmed="yes">couchdb.SimpleEntity.id</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.SimpleEntity.revision</outbound>
+                <outbound type="class" confirmed="no">java.lang.Class</outbound>
+                <outbound type="class" confirmed="no">java.lang.Object</outbound>
+                <outbound type="feature" confirmed="no">java.lang.Object.getClass()</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <outbound type="feature" confirmed="no">java.lang.String.equals(java.lang.Object)</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.SimpleEntity.getId()</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonIgnore</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.SimpleEntity.id</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.SimpleEntity.getRevision()</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonProperty</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.SimpleEntity.revision</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.EntityResponse.getRevision()</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.SimpleEntity.hashCode()</name>
+                <outbound type="feature" confirmed="yes">couchdb.SimpleEntity.id</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.SimpleEntity.revision</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <outbound type="feature" confirmed="no">java.lang.String.hashCode()</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.SimpleEntity.id</name>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.equals(java.lang.Object)</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.getId()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.hashCode()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.setId(java.lang.String)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.SimpleEntity.revision</name>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.equals(java.lang.Object)</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.getRevision()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.hashCode()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.setRevision(java.lang.String)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.SimpleEntity.setId(java.lang.String)</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonProperty</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.SimpleEntity.id</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.EntityResponse.setId(java.lang.String)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.SimpleEntity.setRevision(java.lang.String)</name>
+                <outbound type="feature" confirmed="yes">couchdb.SimpleEntity.revision</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+        </class>
+        <class confirmed="yes">
+            <name>couchdb.View</name>
+            <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonInclude</outbound>
+            <outbound type="feature" confirmed="no">com.fasterxml.jackson.annotation.JsonInclude$Include.NON_NULL</outbound>
+            <outbound type="class" confirmed="no">java.lang.Object</outbound>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.generateIndexForField(java.lang.String)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.generateIndexesForFields(java.util.Collection)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Views.addView(couchdb.View)</inbound>
+            <feature confirmed="yes">
+                <name>couchdb.View.View()</name>
+                <outbound type="feature" confirmed="yes">couchdb.View.View(java.lang.String)</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.View.View(java.lang.String)</name>
+                <outbound type="feature" confirmed="yes">couchdb.View.name</outbound>
+                <outbound type="feature" confirmed="no">java.lang.Object.Object()</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.generateIndexForField(java.lang.String)</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.View.View()</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.View.getMap()</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonProperty</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.View.map</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.View.getName()</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonIgnore</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.View.name</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.Views.addView(couchdb.View)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.View.getReduce()</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonProperty</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.View.reduce</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.View.map</name>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.View.getMap()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.View.setMap(java.lang.String)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.View.name</name>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.View.View(java.lang.String)</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.View.getName()</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.View.reduce</name>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.View.getReduce()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.View.setReduce(java.lang.String)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.View.setMap(java.lang.String)</name>
+                <outbound type="feature" confirmed="yes">couchdb.View.map</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.generateIndexForField(java.lang.String)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.View.setReduce(java.lang.String)</name>
+                <outbound type="feature" confirmed="yes">couchdb.View.reduce</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+        </class>
+        <class confirmed="yes">
+            <name>couchdb.Views</name>
+            <outbound type="class" confirmed="yes">couchdb.SimpleEntity</outbound>
+            <feature confirmed="yes">
+                <name>couchdb.Views.DEFAULT_LANGUAGE</name>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.Views.Views()</name>
+                <outbound type="feature" confirmed="yes">couchdb.SimpleEntity.SimpleEntity()</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.Views.views</outbound>
+                <outbound type="feature" confirmed="no">java.util.HashMap.HashMap()</outbound>
+                <outbound type="class" confirmed="no">java.util.Map</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.Views.addView(couchdb.View)</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonIgnore</outbound>
+                <outbound type="class" confirmed="yes">couchdb.View</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.View.getName()</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.Views.views</outbound>
+                <outbound type="class" confirmed="no">java.lang.Object</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <outbound type="class" confirmed="no">java.util.Map</outbound>
+                <outbound type="feature" confirmed="no">java.util.Map.put(java.lang.Object, java.lang.Object)</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.Views.getLanguage()</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonProperty</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.Views.language</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.Views.getViews()</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonProperty</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.Views.views</outbound>
+                <outbound type="class" confirmed="no">java.util.Map</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.Views.language</name>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.Views.getLanguage()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.Views.setLanguage(java.lang.String)</inbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.Views.setLanguage(java.lang.String)</name>
+                <outbound type="class" confirmed="no">com.fasterxml.jackson.annotation.JsonIgnore</outbound>
+                <outbound type="feature" confirmed="yes">couchdb.Views.language</outbound>
+                <outbound type="class" confirmed="no">java.lang.String</outbound>
+            </feature>
+            <feature confirmed="yes">
+                <name>couchdb.Views.views</name>
+                <outbound type="class" confirmed="no">java.util.Map</outbound>
+                <inbound type="feature" confirmed="yes">couchdb.Views.Views()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.Views.addView(couchdb.View)</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.Views.getViews()</inbound>
+            </feature>
+        </class>
+    </package>
+    <package confirmed="no">
+        <name>io.dropwizard</name>
+        <class confirmed="no">
+            <name>io.dropwizard.Application</name>
+            <inbound type="class" confirmed="yes">application.FantasyFootballApplication</inbound>
+            <feature confirmed="no">
+                <name>io.dropwizard.Application.Application()</name>
+                <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.FantasyFootballApplication()</inbound>
+            </feature>
+        </class>
+        <class confirmed="no">
+            <name>io.dropwizard.Configuration</name>
+            <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.run(io.dropwizard.Configuration, io.dropwizard.setup.Environment)</inbound>
+            <inbound type="class" confirmed="yes">application.FantasyFootballConfiguration</inbound>
+            <feature confirmed="no">
+                <name>io.dropwizard.Configuration.Configuration()</name>
+                <inbound type="feature" confirmed="yes">application.FantasyFootballConfiguration.FantasyFootballConfiguration()</inbound>
+            </feature>
+        </class>
+    </package>
+    <package confirmed="no">
+        <name>io.dropwizard.client</name>
+        <class confirmed="no">
+            <name>io.dropwizard.client.JerseyClientBuilder</name>
+            <feature confirmed="no">
+                <name>io.dropwizard.client.JerseyClientBuilder.JerseyClientBuilder(io.dropwizard.setup.Environment)</name>
+                <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.run(application.FantasyFootballConfiguration, io.dropwizard.setup.Environment)</inbound>
+            </feature>
+            <feature confirmed="no">
+                <name>io.dropwizard.client.JerseyClientBuilder.build(java.lang.String)</name>
+                <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.run(application.FantasyFootballConfiguration, io.dropwizard.setup.Environment)</inbound>
+            </feature>
+        </class>
+    </package>
+    <package confirmed="no">
+        <name>io.dropwizard.jersey.setup</name>
+        <class confirmed="no">
+            <name>io.dropwizard.jersey.setup.JerseyEnvironment</name>
+            <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.run(application.FantasyFootballConfiguration, io.dropwizard.setup.Environment)</inbound>
+            <feature confirmed="no">
+                <name>io.dropwizard.jersey.setup.JerseyEnvironment.register(java.lang.Object)</name>
+                <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.run(application.FantasyFootballConfiguration, io.dropwizard.setup.Environment)</inbound>
+            </feature>
+        </class>
+    </package>
+    <package confirmed="no">
+        <name>io.dropwizard.setup</name>
+        <class confirmed="no">
+            <name>io.dropwizard.setup.Bootstrap</name>
+            <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.initialize(io.dropwizard.setup.Bootstrap)</inbound>
+        </class>
+        <class confirmed="no">
+            <name>io.dropwizard.setup.Environment</name>
+            <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.run(application.FantasyFootballConfiguration, io.dropwizard.setup.Environment)</inbound>
+            <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.run(io.dropwizard.Configuration, io.dropwizard.setup.Environment)</inbound>
+            <feature confirmed="no">
+                <name>io.dropwizard.setup.Environment.jersey()</name>
+                <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.run(application.FantasyFootballConfiguration, io.dropwizard.setup.Environment)</inbound>
+            </feature>
+        </class>
+    </package>
+    <package confirmed="no">
+        <name>java.io</name>
+        <class confirmed="no">
+            <name>java.io.IOException</name>
+            <inbound type="feature" confirmed="yes">couchdb.AbstractDAO$Supplier.get()</inbound>
+        </class>
+    </package>
+    <package confirmed="no">
+        <name>java.lang</name>
+        <class confirmed="no">
+            <name>java.lang.Boolean</name>
+            <inbound type="feature" confirmed="yes">couchdb.EntityResponse.getOk()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.EntityResponse.ok</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.EntityResponse.setOk(java.lang.Boolean)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Replicator.Replicator(java.lang.String, java.lang.String)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Replicator.Replicator(java.lang.String, java.lang.String, java.lang.Boolean, java.lang.Boolean)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Replicator.continuous</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Replicator.createTarget</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Replicator.getContinuous()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Replicator.getCreateTarget()</inbound>
+            <feature confirmed="no">
+                <name>java.lang.Boolean.valueOf(boolean)</name>
+                <inbound type="feature" confirmed="yes">couchdb.Replicator.Replicator(java.lang.String, java.lang.String)</inbound>
+            </feature>
+        </class>
+        <class confirmed="no">
+            <name>java.lang.CharSequence</name>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.parseParameter(java.lang.String)</inbound>
+        </class>
+        <class confirmed="no">
+            <name>java.lang.Class</name>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getDatabaseNameForEntity(java.lang.Class)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.equals(java.lang.Object)</inbound>
+            <feature confirmed="no">
+                <name>java.lang.Class.getSimpleName()</name>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getDatabaseNameForEntity(java.lang.Class)</inbound>
+            </feature>
+        </class>
+        <class confirmed="no">
+            <name>java.lang.Exception</name>
+            <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.main(java.lang.String[])</inbound>
+            <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.run(application.FantasyFootballConfiguration, io.dropwizard.setup.Environment)</inbound>
+            <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.run(io.dropwizard.Configuration, io.dropwizard.setup.Environment)</inbound>
+        </class>
+        <class confirmed="no">
+            <name>java.lang.Integer</name>
+            <inbound type="feature" confirmed="yes">couchdb.QueryResponse.getOffset()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryResponse.getTotalRows()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryResponse.offset</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryResponse.setOffset(java.lang.Integer)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryResponse.setTotalRows(java.lang.Integer)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryResponse.totalRows</inbound>
+        </class>
+        <class confirmed="no">
+            <name>java.lang.Object</name>
+            <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.run(application.FantasyFootballConfiguration, io.dropwizard.setup.Environment)</inbound>
+            <inbound type="class" confirmed="yes">couchdb.AbstractDAO$Supplier</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.AbstractDAO$Supplier.get()</inbound>
+            <inbound type="class" confirmed="yes">couchdb.CouchDbUtilities</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.generateIndexForField(java.lang.String)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.generateIndexesForFields(java.util.Collection)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getDatabaseNameForEntity(java.lang.Class)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getEntitiesFromQueryReponse(couchdb.QueryResponse)</inbound>
+            <inbound type="class" confirmed="yes">couchdb.QueryResponse</inbound>
+            <inbound type="class" confirmed="yes">couchdb.QueryRow</inbound>
+            <inbound type="class" confirmed="yes">couchdb.Replicator</inbound>
+            <inbound type="class" confirmed="yes">couchdb.SimpleEntity</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.equals(java.lang.Object)</inbound>
+            <inbound type="class" confirmed="yes">couchdb.View</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Views.addView(couchdb.View)</inbound>
+            <feature confirmed="no">
+                <name>java.lang.Object.Object()</name>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.CouchDbUtilities()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.QueryResponse.QueryResponse()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.QueryRow.QueryRow()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.Replicator.Replicator(java.lang.String, java.lang.String, java.lang.Boolean, java.lang.Boolean)</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.SimpleEntity()</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.View.View(java.lang.String)</inbound>
+            </feature>
+            <feature confirmed="no">
+                <name>java.lang.Object.getClass()</name>
+                <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.equals(java.lang.Object)</inbound>
+            </feature>
+        </class>
+        <class confirmed="no">
+            <name>java.lang.String</name>
+            <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.main(java.lang.String[])</inbound>
+            <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.run(application.FantasyFootballConfiguration, io.dropwizard.setup.Environment)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.INDEX</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.databasePrefix</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.generateIndexForField(java.lang.String)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.generateIndexesForFields(java.util.Collection)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getDatabaseNameForEntity(java.lang.Class)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getDatabasePrefix()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.parseParameter(java.lang.String)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.setDatabasePrefix(java.lang.String)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.EntityResponse.getRevision()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.EntityResponse.setId(java.lang.String)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryRow.getId()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryRow.getKey()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryRow.id</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryRow.key</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryRow.setId(java.lang.String)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryRow.setKey(java.lang.String)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Replicator.Replicator(java.lang.String, java.lang.String)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Replicator.Replicator(java.lang.String, java.lang.String, java.lang.Boolean, java.lang.Boolean)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Replicator.getSource()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Replicator.getTarget()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Replicator.source</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Replicator.target</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.equals(java.lang.Object)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.getId()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.getRevision()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.hashCode()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.id</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.revision</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.setId(java.lang.String)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.setRevision(java.lang.String)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.View.View()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.View.View(java.lang.String)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.View.getMap()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.View.getName()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.View.getReduce()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.View.map</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.View.name</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.View.reduce</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.View.setMap(java.lang.String)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.View.setReduce(java.lang.String)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Views.DEFAULT_LANGUAGE</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Views.addView(couchdb.View)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Views.getLanguage()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Views.language</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Views.setLanguage(java.lang.String)</inbound>
+            <feature confirmed="no">
+                <name>java.lang.String.equals(java.lang.Object)</name>
+                <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.equals(java.lang.Object)</inbound>
+            </feature>
+            <feature confirmed="no">
+                <name>java.lang.String.format(java.lang.String, java.lang.Object[])</name>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.generateIndexForField(java.lang.String)</inbound>
+            </feature>
+            <feature confirmed="no">
+                <name>java.lang.String.hashCode()</name>
+                <inbound type="feature" confirmed="yes">couchdb.SimpleEntity.hashCode()</inbound>
+            </feature>
+            <feature confirmed="no">
+                <name>java.lang.String.replace(java.lang.CharSequence, java.lang.CharSequence)</name>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.parseParameter(java.lang.String)</inbound>
+            </feature>
+            <feature confirmed="no">
+                <name>java.lang.String.toLowerCase()</name>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getDatabaseNameForEntity(java.lang.Class)</inbound>
+            </feature>
+            <feature confirmed="no">
+                <name>java.lang.String.valueOf(java.lang.Object)</name>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getDatabaseNameForEntity(java.lang.Class)</inbound>
+            </feature>
+        </class>
+        <class confirmed="no">
+            <name>java.lang.StringBuilder</name>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getDatabaseNameForEntity(java.lang.Class)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.parseParameter(java.lang.String)</inbound>
+            <feature confirmed="no">
+                <name>java.lang.StringBuilder.StringBuilder(java.lang.String)</name>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getDatabaseNameForEntity(java.lang.Class)</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.parseParameter(java.lang.String)</inbound>
+            </feature>
+            <feature confirmed="no">
+                <name>java.lang.StringBuilder.append(java.lang.String)</name>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getDatabaseNameForEntity(java.lang.Class)</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.parseParameter(java.lang.String)</inbound>
+            </feature>
+            <feature confirmed="no">
+                <name>java.lang.StringBuilder.toString()</name>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getDatabaseNameForEntity(java.lang.Class)</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.parseParameter(java.lang.String)</inbound>
+            </feature>
+        </class>
+    </package>
+    <package confirmed="no">
+        <name>java.util</name>
+        <class confirmed="no">
+            <name>java.util.ArrayList</name>
+            <feature confirmed="no">
+                <name>java.util.ArrayList.ArrayList()</name>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getEntitiesFromQueryReponse(couchdb.QueryResponse)</inbound>
+            </feature>
+            <feature confirmed="no">
+                <name>java.util.ArrayList.add(java.lang.Object)</name>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getEntitiesFromQueryReponse(couchdb.QueryResponse)</inbound>
+            </feature>
+        </class>
+        <class confirmed="no">
+            <name>java.util.Collection</name>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.generateIndexesForFields(java.util.Collection)</inbound>
+            <feature confirmed="no">
+                <name>java.util.Collection.iterator()</name>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.generateIndexesForFields(java.util.Collection)</inbound>
+            </feature>
+        </class>
+        <class confirmed="no">
+            <name>java.util.HashMap</name>
+            <feature confirmed="no">
+                <name>java.util.HashMap.HashMap()</name>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.generateIndexesForFields(java.util.Collection)</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.Views.Views()</inbound>
+            </feature>
+        </class>
+        <class confirmed="no">
+            <name>java.util.Iterator</name>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.generateIndexesForFields(java.util.Collection)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getEntitiesFromQueryReponse(couchdb.QueryResponse)</inbound>
+            <feature confirmed="no">
+                <name>java.util.Iterator.hasNext()</name>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.generateIndexesForFields(java.util.Collection)</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getEntitiesFromQueryReponse(couchdb.QueryResponse)</inbound>
+            </feature>
+            <feature confirmed="no">
+                <name>java.util.Iterator.next()</name>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.generateIndexesForFields(java.util.Collection)</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getEntitiesFromQueryReponse(couchdb.QueryResponse)</inbound>
+            </feature>
+        </class>
+        <class confirmed="no">
+            <name>java.util.List</name>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getEntitiesFromQueryReponse(couchdb.QueryResponse)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryResponse.getRows()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryResponse.rows</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.QueryResponse.setRows(java.util.List)</inbound>
+            <feature confirmed="no">
+                <name>java.util.List.iterator()</name>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.getEntitiesFromQueryReponse(couchdb.QueryResponse)</inbound>
+            </feature>
+        </class>
+        <class confirmed="no">
+            <name>java.util.Map</name>
+            <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.generateIndexesForFields(java.util.Collection)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Views.Views()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Views.addView(couchdb.View)</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Views.getViews()</inbound>
+            <inbound type="feature" confirmed="yes">couchdb.Views.views</inbound>
+            <feature confirmed="no">
+                <name>java.util.Map.put(java.lang.Object, java.lang.Object)</name>
+                <inbound type="feature" confirmed="yes">couchdb.CouchDbUtilities.generateIndexesForFields(java.util.Collection)</inbound>
+                <inbound type="feature" confirmed="yes">couchdb.Views.addView(couchdb.View)</inbound>
+            </feature>
+        </class>
+    </package>
+    <package confirmed="no">
+        <name>player</name>
+        <class confirmed="no">
+            <name>player.PlayerResource</name>
+            <feature confirmed="no">
+                <name>player.PlayerResource.PlayerResource(com.sun.jersey.api.client.Client)</name>
+                <inbound type="feature" confirmed="yes">application.FantasyFootballApplication.run(application.FantasyFootballConfiguration, io.dropwizard.setup.Environment)</inbound>
+            </feature>
+        </class>
+    </package>
+</dependencies>
