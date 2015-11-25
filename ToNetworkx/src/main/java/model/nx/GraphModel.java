@@ -63,7 +63,7 @@ public class GraphModel {
 	private void populateEdges() {
 		clazzes.forEach(id -> classesToEdges.put(id, new HashSet<>()));
 
-		clazzes.parallelStream().forEach(clazz -> {
+		clazzes.stream().forEach(clazz -> {
 			Collection<Clazz> edges = classesToEdges.get(clazz);
 			getClazzConnections(clazz)
 					.forEach((connection) -> edges.add(mapConnection(connection)));
@@ -71,23 +71,26 @@ public class GraphModel {
 	}
 
 	private void populateFeaturesToClazzes() {
-		clazzes.parallelStream().forEach(
+		clazzes.stream().forEach(
 				clazz -> ofNullable(clazz.getFeatures()).ifPresent(
-						features -> features.parallelStream().forEach(
+						features -> features.stream().forEach(
 								feature -> featuresToClazzes.put(feature, clazz))));
 	}
 
 	private List<Clazz> populateClazzes(Collection<Package> packages) {
 		return packages
-				.parallelStream()
-				.flatMap(p -> p.getClasses().parallelStream())
+				.stream()
+				.flatMap(p -> p.getClasses().stream())
 				.collect(toList());
 	}
 
 	private Clazz mapConnection(Connection connection) {
-		return connection.getType().equals(ConnectionType.CLAZZ)
+	
+		Clazz clazz = connection.getType().equals(ConnectionType.CLAZZ)
 				? classNames.get(connection.getValue())
 				: featuresToClazzes.get(featureNames.get(connection.getValue()));
+		return of(
+				clazz).get();
 	}
 
 	public Map<Feature, Clazz> getFeaturesToClazzes() {

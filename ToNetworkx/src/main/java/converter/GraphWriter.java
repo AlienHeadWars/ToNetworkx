@@ -8,9 +8,13 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -43,6 +47,24 @@ public class GraphWriter {
 
 			bw.close();
 		});
+		List<Entry<String, Collection<String>>> collect =
+				getEdges(
+						object)
+								.entrySet()
+								.stream()
+								.sorted(
+										(e1, e2) -> Integer.compare(
+												e1.getValue().size(),
+												e2.getValue().size()))
+								.collect(Collectors.toList());
+		double size = collect.size();
+		Double eightyEighthPercentile = size * .88;
+		System.out.println(
+				"88th%tile degree of "
+						+ file.getName()
+						+ " is:"
+						+ collect.get(eightyEighthPercentile.intValue()).getValue().size());
+		System.out.println(file.getName() +" has " + collect.size()+" nodes");;
 	}
 
 	public Map<String, Collection<String>> getEdges(GraphModel object) {
@@ -58,7 +80,7 @@ public class GraphWriter {
 										.getValue()
 										.stream()
 										.filter(clazzFilter)
-										.filter(clazz->clazz!=entry.getKey())
+										.filter(clazz -> clazz != entry.getKey())
 										.map(clazz -> clazz.getName())
 										.collect(toList())));
 	}
