@@ -7,7 +7,8 @@
 	DegreesList.append(Degrees[Degree]);
 >>> GraphSize=len(DegreesList)
 >>> DegreesList.sort()
->>> EightyFirstPercentileDegree=DegreesList[int(GraphSize*.81)]
 >>> RichClubCoefficients=nx.rich_club_coefficient(Graph,normalized=True)
-
-                  
+>>> def getPercentile(percentile, list):
+	return list[math.ceil(len(list)*(percentile/100))-1];
+>>> EightyFirstPercentileDegree=getPercentile(81,DegreesList)
+>>> EightyFirstPercentileCoefficient=RichClubCoefficients[EightyFirstPercentileDegree]
