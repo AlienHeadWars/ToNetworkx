@@ -9,5 +9,9 @@
 >>> DegreesList.sort()
 >>> EightyFirstPercentileDegree=DegreesList[int(GraphSize*.81)]
 >>> RichClubCoefficients=nx.rich_club_coefficient(Graph,normalized=True)
-
+>>> import json
+>>> def output(objeact, filepath):
+	Outfile=open(filepath, w);
+	json.dump(data, outfile)
+	Outfile.close;
                   
