@@ -54,7 +54,7 @@ def getStats(filepath):
 		except:
 			Stats[label]="uncomputable"
 	timeStats('RichClubCoefficients', richClubCoefficientsFunction);
-	timeStats('richClubCoefficientsNoNormalisation', richClubCoefficientsNoNormalisationFunction);
+	timeStats('RichClubCoefficientsNoNormalisation', richClubCoefficientsNoNormalisationFunction);
 	timeStats('Assortativity', degree_assortativity_coefficientFunction);
 	timeStats('AverageShortestPath', averageShortestPathsFunction);
 	timeStats('AverageClustering', average_clusteringFunction);
@@ -65,6 +65,7 @@ def getStats(filepath):
 	Stats['EightyFirstPercentileDegreeRichClubCoefficient']=EightyFirstPercentileDegreeRichClubCoefficient
 	Stats['EightyFirstPercentileDegree']=EightyFirstPercentileDegree
 	Stats['CoefficientsByPercentile']=getCoefficientsByPercentile(DegreesList,RichClubCoefficients)
+	Stats['CoefficientsByPercentileNoNormalisation']=getCoefficientsByPercentile(DegreesList,Stats['RichClubCoefficientsNoNormalisation']['Result'])
 	Stats['GraphSize']=GraphSize
 	return Stats;
 def output(path, obj):
@@ -76,6 +77,3 @@ def processFiles( inputPath, outputPath, processFileMethod):
 def processStats( inputPath, outputPath ):
 		processFiles( inputPath, outputPath, getStats);
 processStats("c:/graphdata/graphs","c:/graphdata/graphstats")
-
-
-	
