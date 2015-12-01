@@ -18,12 +18,10 @@ public class Application {
 		long currentTimeMillis = System.currentTimeMillis();
 		fileGetter
 				.getFiles(DEPENDENCY_FINDER_INPUT_FOLDER)
-				.parallelStream()
-				.collect(
-						toMap(
-								Application::changeToOutputFile,
-								file -> new GraphModel(dfLoader.getPackages(file).getPackages())))
-				.forEach(fileWriter::writeObject);
+				.stream()
+				.forEach(file->{
+					fileWriter.writeObject(changeToOutputFile(file), new GraphModel(dfLoader.getPackages(file).getPackages()));
+				});
 		;
 		long endTimeMillis = System.currentTimeMillis();
 		System.out.println("completed in:" + (endTimeMillis - currentTimeMillis));
