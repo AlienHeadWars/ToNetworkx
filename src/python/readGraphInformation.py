@@ -43,7 +43,7 @@ def getStats(filepath):
 		Stats[label]={}
 		Stats[label]['times']=[]
 		try:
-			for iteration in numberGenerator(1):
+			for iteration in numberGenerator(10):
 				print ("calculating " + label+ " for " +filepath +", iteration: "+ str(iteration))
 				StartTime=time.clock()
 				Result=function()
@@ -99,6 +99,3 @@ def getStatSummary( dicOfStats, methodToGetStats ):
 	for stats in dicOfStats:
 		StatsByGraph[stats]=methodToGetStats(dicOfStats[stats])
 	return StatsByGraph;
-
-
-
