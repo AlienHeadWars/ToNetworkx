@@ -43,7 +43,7 @@ def getStats(filepath):
 		Stats[label]={}
 		Stats[label]['times']=[]
 		try:
-			for iteration in numberGenerator(2):
+			for iteration in numberGenerator(10):
 				print ("calculating " + label+ " for " +filepath +", iteration: "+ str(iteration))
 				StartTime=time.clock()
 				Result=function()
@@ -52,7 +52,8 @@ def getStats(filepath):
 				Stats[label]['times'].append(EndTime-StartTime)
 			Stats[label]['averageTime']=mean(Stats[label]['times'])
 		except:
-			Stats[label]="uncomputable"
+			Stats[label]['Result']="uncomputable"
+			Stats[label]['averageTime']="uncomputable"
 	timeStats('RichClubCoefficients', richClubCoefficientsFunction);
 	timeStats('RichClubCoefficientsNoNormalisation', richClubCoefficientsNoNormalisationFunction);
 	timeStats('Assortativity', degree_assortativity_coefficientFunction);
@@ -71,9 +72,30 @@ def getStats(filepath):
 def output(path, obj):
 	with open(path,'w') as outfile:
 		json.dump(obj, outfile);
-def processFiles( inputPath, outputPath, processFileMethod):
+		
+def processStats( inputPath, outputFolderForMethods, outPutFolderForStatsByGraph ):
+	dicOfStats={}
 	for file in os.listdir(inputPath):
-		output(outputPath+'/'+file,processFileMethod(inputPath+"/"+file));
-def processStats( inputPath, outputPath ):
-		processFiles( inputPath, outputPath, getStats);
-processStats("c:/graphdata/graphs","c:/graphdata/graphstats")
+		Stat=getStats(inputPath+"/"+file)
+		dicOfStats[file]=Stat
+		output(outPutFolderForStatsByGraph+'/'+file,Stat)
+	FirstStatGroup=next (iter (dicOfStats.values()))
+	for statKey in FirstStatGroup:
+			if (type(FirstStatGroup[statKey]) is dict) :
+				def getResult(stats):
+					return stats[statKey]['Result']
+				def getAverageTime(stats):
+					return stats[statKey]['averageTime']
+				output(outputFolderForMethods+'/'+statKey+"_value",getStatSummary(dicOfStats,getResult))
+				output(outputFolderForMethods+'/'+statKey+"_averageTime",getStatSummary(dicOfStats,getAverageTime))
+			else:
+				def getStat(stats):
+					return stats[statKey]
+				output(outputFolderForMethods+'/'+statKey,getStatSummary(dicOfStats,getStat));
+
+
+def getStatSummary( dicOfStats, methodToGetStats ):
+	StatsByGraph={}
+	for stats in dicOfStats:
+		StatsByGraph[stats]=methodToGetStats(dicOfStats[stats])
+	return StatsByGraph;
