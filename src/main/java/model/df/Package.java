@@ -5,7 +5,7 @@ import java.util.Collection;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-public class Package {
+public class Package implements HasName {
 	private String name;
 
 	public String getName() {
