@@ -5,7 +5,7 @@ import java.util.Collection;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-public class Clazz implements HasName {
+public class Clazz implements Node {
 	private String confirmed;
 	private Collection<Connection> outBound;
 	private Collection<Connection> inBound;
