@@ -29,8 +29,8 @@ import static java.util.Optional.*;
 
 public class GraphModel {
 	private final Map<Feature, Clazz> featuresToClazzes = new HashMap<>();
-	private final Map<Clazz, Set<Clazz>> classesToEdges = new HashMap<>();
-	private final Map<Package, Set<Package>> packagesToEdge = new HashMap<>();
+	private final Map<Clazz, Set<Clazz>> clazzEdges = new HashMap<>();
+	private final Map<Package, Set<Package>> packageEdges = new HashMap<>();
 	private final Map<String, Clazz> classNames = new HashMap<>();
 	private final Map<String, Feature> featureNames = new HashMap<>();
 	private final List<Clazz> clazzes;
@@ -48,16 +48,16 @@ public class GraphModel {
 		packages.forEach(
 				pack -> pack.getClasses().forEach(clazz -> classToPackage.put(clazz, pack)));
 
-		packages.forEach(id -> packagesToEdge.put(id, new HashSet<>()));
+		packages.forEach(id -> packageEdges.put(id, new HashSet<>()));
 
-		classesToEdges.keySet().stream().forEach(
-				clazz -> classesToEdges.get(clazz).forEach(
-						edge -> packagesToEdge
+		clazzEdges.keySet().stream().forEach(
+				clazz -> clazzEdges.get(clazz).forEach(
+						edge -> packageEdges
 								.get(classToPackage.get(clazz))
 								.add(classToPackage.get(edge))));
 
 		clazzes.stream().forEach(clazz -> {
-			Collection<Clazz> edges = classesToEdges.get(clazz);
+			Collection<Clazz> edges = clazzEdges.get(clazz);
 			getClazzConnections(clazz)
 					.forEach((connection) -> edges.add(mapConnection(connection)));
 		});
@@ -84,10 +84,10 @@ public class GraphModel {
 	}
 
 	private void populateEdges() {
-		clazzes.forEach(id -> classesToEdges.put(id, new HashSet<>()));
+		clazzes.forEach(id -> clazzEdges.put(id, new HashSet<>()));
 
 		clazzes.stream().forEach(clazz -> {
-			Collection<Clazz> edges = classesToEdges.get(clazz);
+			Collection<Clazz> edges = clazzEdges.get(clazz);
 			getClazzConnections(clazz)
 					.forEach((connection) -> edges.add(mapConnection(connection)));
 		});
@@ -117,8 +117,8 @@ public class GraphModel {
 		return featuresToClazzes;
 	}
 
-	public Map<Clazz, Set<Clazz>> getEdges() {
-		return classesToEdges;
+	public Map<Clazz, Set<Clazz>> getClazzEdges() {
+		return clazzEdges;
 	}
 
 	public Map<String, Clazz> getClassNames() {
@@ -131,6 +131,10 @@ public class GraphModel {
 
 	public List<Clazz> getClazzes() {
 		return clazzes;
+	}
+
+	public Map<Package, Set<Package>> getPackageEdges() {
+		return packageEdges;
 	}
 
 }
