@@ -3,6 +3,7 @@ package converter;
 import static java.util.stream.Collectors.toMap;
 
 import java.io.File;
+import java.util.Optional;
 
 import model.nx.GraphModel;
 
@@ -16,20 +17,28 @@ public class Application {
 
 	public static void main(String... args) {
 		long currentTimeMillis = System.currentTimeMillis();
-		fileGetter
-				.getFiles(DEPENDENCY_FINDER_INPUT_FOLDER)
-				.stream()
-				.forEach(file->{
-					fileWriter.writeObject(changeToOutputFile(file), new GraphModel(dfLoader.getPackages(file).getPackages()));
-				});
+		fileGetter.getFiles(DEPENDENCY_FINDER_INPUT_FOLDER).stream().forEach(file -> {
+			GraphModel graphModel = new GraphModel(dfLoader.getPackages(file).getPackages());
+			fileWriter.writeObject(
+					changeToOutputFile(file, Optional.empty()),
+					graphModel.getClazzEdges());
+			fileWriter.writeObject(
+					changeToOutputFile(file, Optional.of("_packages")),
+					graphModel.getPackageEdges());
+			fileWriter.writeObject(
+					changeToOutputFile(file, Optional.of("_features")),
+					graphModel.getFeatureEdges());
+		});
 		;
 		long endTimeMillis = System.currentTimeMillis();
 		System.out.println("completed in:" + (endTimeMillis - currentTimeMillis));
 	}
 
-	private static File changeToOutputFile(File file) {
+	private static File changeToOutputFile(File file, Optional<String> extension) {
 		String path = file.getPath();
-		String newPath = path.replaceAll(DEPENDENCY_FINDER_INPUT_FOLDER, NETWORK_X_OUTPUT_FOLDER);
+		String newPath =
+				path.replaceAll(DEPENDENCY_FINDER_INPUT_FOLDER, NETWORK_X_OUTPUT_FOLDER)
+						+ extension.orElse("");
 		return new File(newPath);
 	}
 }

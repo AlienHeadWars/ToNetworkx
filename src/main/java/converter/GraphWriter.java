@@ -32,7 +32,9 @@ public class GraphWriter {
 		clazzFilter = (clazz) -> includeNonConfirmed || "yes".equals(clazz.getConfirmed());
 	}
 
-	public void writeObject(File file, Map<? extends Node, ? extends Collection< ? extends Node>> object) {
+	public void writeObject(
+			File file,
+			Map<? extends Node, ? extends Collection<? extends Node>> object) {
 
 		runTimeExceptionise(() -> {
 			file.createNewFile();
@@ -45,25 +47,27 @@ public class GraphWriter {
 				entry.getValue().forEach(name -> write.accept(" " + name));
 				write.accept("\n");
 			});
-
 			bw.close();
 		});
+		System.out.println("completed: " + file.getName());
 	}
 
-	public Map<String, Collection<String>> getEdges(Map<? extends Node, ? extends Collection< ? extends Node>> object) {
+	public Map<String, Collection<String>> getEdges(
+			Map<? extends Node, ? extends Collection<? extends Node>> object) {
 		return object
 				.entrySet()
 				.stream()
 				.filter(e -> clazzFilter.test(e.getKey()))
 				.collect(
 						toMap(
-								entry -> entry.getKey().getName(),
+								entry -> entry.getKey().getName().replaceAll(" ",""),
 								entry -> entry
 										.getValue()
 										.stream()
 										.filter(clazzFilter)
 										.filter(clazz -> clazz != entry.getKey())
-										.map(clazz -> clazz.getName())
+										.map(clazz -> clazz.getName().replaceAll(" ",""))
+										.filter(name -> !entry.getKey().getName().equals(name))
 										.collect(toList())));
 	}
 }
