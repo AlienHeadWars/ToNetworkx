@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -28,7 +29,8 @@ import static java.util.Optional.*;
 
 public class GraphModel {
 	private final Map<Feature, Clazz> featuresToClazzes = new HashMap<>();
-	private final Map<Clazz, Collection<Clazz>> classesToEdges = new HashMap<>();
+	private final Map<Clazz, Set<Clazz>> clazzEdges = new HashMap<>();
+	private final Map<Package, Set<Package>> packageEdges = new HashMap<>();
 	private final Map<String, Clazz> classNames = new HashMap<>();
 	private final Map<String, Feature> featureNames = new HashMap<>();
 	private final List<Clazz> clazzes;
@@ -38,6 +40,27 @@ public class GraphModel {
 		populateNames();
 		populateFeaturesToClazzes();
 		populateEdges();
+		populatePackageEdges(packages);
+	}
+
+	private void populatePackageEdges(Collection<Package> packages) {
+		final Map<Clazz, Package> classToPackage = new HashMap<>();
+		packages.forEach(
+				pack -> pack.getClasses().forEach(clazz -> classToPackage.put(clazz, pack)));
+
+		packages.forEach(id -> packageEdges.put(id, new HashSet<>()));
+
+		clazzEdges.keySet().stream().forEach(
+				clazz -> clazzEdges.get(clazz).forEach(
+						edge -> packageEdges
+								.get(classToPackage.get(clazz))
+								.add(classToPackage.get(edge))));
+
+		clazzes.stream().forEach(clazz -> {
+			Collection<Clazz> edges = clazzEdges.get(clazz);
+			getClazzConnections(clazz)
+					.forEach((connection) -> edges.add(mapConnection(connection)));
+		});
 	}
 
 	private void populateNames() {
@@ -61,10 +84,10 @@ public class GraphModel {
 	}
 
 	private void populateEdges() {
-		clazzes.forEach(id -> classesToEdges.put(id, new HashSet<>()));
+		clazzes.forEach(id -> clazzEdges.put(id, new HashSet<>()));
 
 		clazzes.stream().forEach(clazz -> {
-			Collection<Clazz> edges = classesToEdges.get(clazz);
+			Collection<Clazz> edges = clazzEdges.get(clazz);
 			getClazzConnections(clazz)
 					.forEach((connection) -> edges.add(mapConnection(connection)));
 		});
@@ -78,27 +101,24 @@ public class GraphModel {
 	}
 
 	private List<Clazz> populateClazzes(Collection<Package> packages) {
-		return packages
-				.stream()
-				.flatMap(p -> p.getClasses().stream())
-				.collect(toList());
+		return packages.stream().flatMap(p -> p.getClasses().stream()).collect(toList());
 	}
 
 	private Clazz mapConnection(Connection connection) {
-	
-		Clazz clazz = connection.getType().equals(ConnectionType.CLAZZ)
-				? classNames.get(connection.getValue())
-				: featuresToClazzes.get(featureNames.get(connection.getValue()));
-		return of(
-				clazz).get();
+
+		Clazz clazz =
+				connection.getType().equals(ConnectionType.CLAZZ)
+						? classNames.get(connection.getValue())
+						: featuresToClazzes.get(featureNames.get(connection.getValue()));
+		return of(clazz).get();
 	}
 
 	public Map<Feature, Clazz> getFeaturesToClazzes() {
 		return featuresToClazzes;
 	}
 
-	public Map<Clazz, Collection<Clazz>> getEdges() {
-		return classesToEdges;
+	public Map<Clazz, Set<Clazz>> getClazzEdges() {
+		return clazzEdges;
 	}
 
 	public Map<String, Clazz> getClassNames() {
@@ -111,6 +131,10 @@ public class GraphModel {
 
 	public List<Clazz> getClazzes() {
 		return clazzes;
+	}
+
+	public Map<Package, Set<Package>> getPackageEdges() {
+		return packageEdges;
 	}
 
 }

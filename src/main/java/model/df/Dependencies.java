@@ -11,9 +11,6 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 public class Dependencies {
 	private Collection<Package> packages;
 
-//	@JacksonXmlElementWrapper(localName="package")
-//	@XmlElement(name="package")
-//	@JsonProperty("package")
 	@JacksonXmlProperty(localName = "package")
     @JacksonXmlElementWrapper(useWrapping = false)
 	public Collection<Package> getPackages() {
